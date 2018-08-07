@@ -17,9 +17,6 @@ workflows:
                 ignore: master
         - deploy:
             context: cfg
-            requires:
-              - lint
-              - test
             filters:
               branches:
                 only: master
