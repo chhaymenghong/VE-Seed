@@ -45,12 +45,13 @@ If you want to use precommit and prepush git hooks to perform certains tasks suc
 - ```styleext``` specifies the stylesheet extension used when a new stylesheet file is generated
 - ```styles``` specifies global stylesheet and vendor files
 - ```stylePreprocessorOptions:includePaths``` is used to resolve stylesheet files when ```@import``` is used without using relative path
-- ```config.yml``` contains jobs for Circle CI to run. Testing and Linting jobs are run by Circle CI automatically on git push to any branches except for master. Deployment to JFrog artifactory job is run by Circle CI automatically on successful merge from other branches to master. Deployment job is exclusively for master branch only. master and development branche should be protected by enabling the following options in github:
-- ```Protect this Branch```
-- ```Require pull request reviews before merging```
-- ```Require status checks to pass before merging```
--```“Require branches to be up to date before merging```
-- ```Select ci/circleci: lint and ci/circleci: test```
+- ```config.yml``` contains jobs for Circle CI to run. Testing and Linting jobs are run by Circle CI automatically on git push to any branches except for master. Deployment to JFrog artifactory job is run by Circle CI automatically on successful merge from other branches to master. Deployment job is exclusively for master branch only.
+- master and development branches should be protected by enabling the following options in github:
+  - ```Protect this Branch```
+  - ```Require pull request reviews before merging```
+  - ```Require status checks to pass before merging```
+  - ```“Require branches to be up to date before merging```
+  - ```Select ci/circleci: lint and ci/circleci: test```
 This way, all other branches must pass all the testing and linting requirements before allowed to merge into development branch. The same requirement also apply to merging from development to master branch
 - ```deploy.sh``` contains logics for artifact deployment. We shouldn’t have to execute this file directly. Circle CI will run this baed on the deployment job specified in config.yml
 	
